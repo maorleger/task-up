@@ -1,16 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { TaskUpAppComponent } from './taskUpApp.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    TaskUpAppComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [TaskUpAppComponent]
 })
-export class AppModule { }
+export class TaskUpAppModule { }
