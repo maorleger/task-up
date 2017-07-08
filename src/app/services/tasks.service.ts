@@ -1,3 +1,7 @@
+//Angular imports
+import {Injectable } from '@angular/core'
+
+@Injectable()
 export class TasksService {
   tasks: string[] = [
     'Task1',
