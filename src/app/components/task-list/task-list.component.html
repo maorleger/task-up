@@ -1,6 +1,5 @@
-<div class="tasks">
-  <div *ngFor="let task of tasks" class="taskItem">
-    <input type="checkbox" name="taskItem__checkbox">
-    <span class="taskItem__text">{{task}}</span>
-  </div>
-</div>
+<md-list>
+  <md-list-item *ngFor="let task of tasks">
+    <md-checkbox>{{task}}</md-checkbox>
+  </md-list-item>
+</md-list>
