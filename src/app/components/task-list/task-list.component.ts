@@ -1,7 +1,7 @@
-//Angular imports
+// Angular imports
 import { Component, OnInit } from '@angular/core';
 
-//Service module imports
+// Service module imports
 import { TasksService } from '../../services/services.module';
 
 @Component({
@@ -10,18 +10,19 @@ import { TasksService } from '../../services/services.module';
   providers: [TasksService],
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent implements OnInit{
 
-	tasks: string[];
+export class TaskListComponent implements OnInit {
 
-	constructor(private taskService: TasksService) { }
+  tasks: string[];
 
-	ngOnInit() {
+  constructor(private taskService: TasksService) { }
 
-		this.taskService.getTasks().then((result) => {
-			this.tasks = result;
-		});
+  ngOnInit() {
 
-	}
+    this.taskService.getTasks().then((result) => {
+      this.tasks = result;
+    });
+
+  }
 
 }

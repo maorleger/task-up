@@ -1,11 +1,11 @@
-//Service module imports
+// Service module imports
 import { TasksService } from '../../services/services.module'
 
-//Local folder imports
+// Local folder imports
 import { TaskListComponent } from './task-list.component';
 
 describe('TaskListComponent', () => {
-  
+
   let underTest: TaskListComponent;
 
     const tasksServiceStub = {
@@ -18,19 +18,19 @@ describe('TaskListComponent', () => {
 
   it('fetches list of tasks', done => {
 
-    let testTasks = ["task1", "task2"];
+    const testTasks = ['task1', 'task2'];
 
-    spyOn(tasksServiceStub, "getTasks").and.callFake(() => {
+    spyOn(tasksServiceStub, 'getTasks').and.callFake(() => {
           return Promise.resolve(testTasks);
     });
 
     underTest.ngOnInit();
-    
+
     setTimeout(() => {
 
         expect(tasksServiceStub.getTasks).toHaveBeenCalled();
         expect(underTest.tasks).toEqual(testTasks);
-        
+
         done();
 
     });
