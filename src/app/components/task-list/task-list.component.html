@@ -1,3 +1,6 @@
-<ul>
-	<li *ngFor = "let task of tasks">{{task}}</li>
-</ul>
+<div class="tasks">
+  <div *ngFor="let task of tasks" class="taskItem">
+    <input type="checkbox" name="taskItem__checkbox">
+    <span class="taskItem__text">{{task}}</span>
+  </div>
+</div>
