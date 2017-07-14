@@ -5,11 +5,14 @@ import { NgModule } from '@angular/core';
 import { TaskUpAppComponent } from './taskUpApp.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 
+import { FormsModule } from '@angular/forms';
+
 import {
   MdListModule,
   MdCheckboxModule,
   MdCardModule,
-  MdButtonModule
+  MdButtonModule,
+  MdInputModule
 } from '@angular/material';
 import { TaskComponent } from './components/task/task.component';
 
@@ -21,11 +24,13 @@ import { TaskComponent } from './components/task/task.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     MdListModule,
     MdCheckboxModule,
     MdCardModule,
-    MdButtonModule
+    MdButtonModule,
+    MdInputModule
   ],
   providers: [],
   bootstrap: [TaskUpAppComponent]

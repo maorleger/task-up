@@ -7,17 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-	@Input()
-	isInEditMode: boolean;
+  @Input()
+  isInEditMode: boolean;
 
-    @Input()
-    task: string;
+  @Input()
+  task: string;
 
-	constructor() {
-		this.isInEditMode = false;
-	}
+  constructor() {
+    this.isInEditMode = false;
+  }
 
-	ngOnInit() {
-	}
+  ngOnInit() {
+  }
 
 }
