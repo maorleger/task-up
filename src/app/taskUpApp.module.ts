@@ -11,11 +11,13 @@ import {
   MdCardModule,
   MdButtonModule
 } from '@angular/material';
+import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
   declarations: [
     TaskUpAppComponent,
-    TaskListComponent
+    TaskListComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,

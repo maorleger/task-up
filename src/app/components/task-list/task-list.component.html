@@ -7,7 +7,7 @@
   </button>
   <md-list>
     <md-list-item *ngFor="let task of tasks">
-      <md-checkbox>{{task}}</md-checkbox>
+      <task [isInEditMode]="isInEditMode" [task]="task"></task>
     </md-list-item>
   </md-list>
 </div>
