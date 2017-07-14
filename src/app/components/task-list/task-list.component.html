@@ -1,5 +1,10 @@
 <div class="taskList">
-  <button md-raised-button (click)="onEditButtonClicked($event)">Raised button</button>
+  <button 
+    md-raised-button 
+    class="taskList__editButton"
+    (click)="onEditButtonClicked($event)">
+      Edit
+  </button>
   <md-list>
     <md-list-item *ngFor="let task of tasks">
       <md-checkbox>{{task}}</md-checkbox>

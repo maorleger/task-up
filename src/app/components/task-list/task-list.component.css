@@ -1,0 +1,8 @@
+.taskList {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskList__editButton {
+  align-self: flex-end;
+}
