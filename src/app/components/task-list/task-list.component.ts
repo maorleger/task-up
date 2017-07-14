@@ -14,15 +14,24 @@ import { TasksService } from '../../services/services.module';
 export class TaskListComponent implements OnInit {
 
   tasks: string[];
+  isInEditMode: boolean;
 
-  constructor(private taskService: TasksService) { }
+  constructor(private taskService: TasksService) {
+    this.isInEditMode = false;
+  }
 
   ngOnInit() {
-
     this.taskService.getTasks().then((result) => {
       this.tasks = result;
     });
+  }
 
+  onEditButtonClicked() {
+    this.setEditMode(true);
+  }
+
+  setEditMode(isInEditMode: boolean) {
+    this.isInEditMode = isInEditMode;
   }
 
 }

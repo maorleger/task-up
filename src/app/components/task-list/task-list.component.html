@@ -1,5 +1,8 @@
-<md-list>
-  <md-list-item *ngFor="let task of tasks">
-    <md-checkbox>{{task}}</md-checkbox>
-  </md-list-item>
-</md-list>
+<div class="taskList">
+  <button md-raised-button (click)="onEditButtonClicked($event)">Raised button</button>
+  <md-list>
+    <md-list-item *ngFor="let task of tasks">
+      <md-checkbox>{{task}}</md-checkbox>
+    </md-list-item>
+  </md-list>
+</div>

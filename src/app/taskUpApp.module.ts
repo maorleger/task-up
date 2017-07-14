@@ -8,7 +8,8 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import {
   MdListModule,
   MdCheckboxModule,
-  MdCardModule
+  MdCardModule,
+  MdButtonModule
 } from '@angular/material';
 
 @NgModule({
@@ -21,7 +22,8 @@ import {
     BrowserAnimationsModule,
     MdListModule,
     MdCheckboxModule,
-    MdCardModule
+    MdCardModule,
+    MdButtonModule
   ],
   providers: [],
   bootstrap: [TaskUpAppComponent]

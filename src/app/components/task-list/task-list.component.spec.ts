@@ -37,4 +37,12 @@ describe('TaskListComponent', () => {
 
   });
 
+  describe('editButton Click handler', () => {
+    it('toggles the isEditing state', () => {
+      underTest.setEditMode(false);
+      underTest.onEditButtonClicked();
+      expect(underTest.isInEditMode).toBeTruthy();
+    })
+  });
+
 });
