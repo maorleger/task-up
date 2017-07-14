@@ -3,23 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TaskComponent } from './task.component';
 
 describe('TaskComponent', () => {
-  let component: TaskComponent;
-  let fixture: ComponentFixture<TaskComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TaskComponent ]
-    })
-    .compileComponents();
-  }));
+   let underTest: TaskComponent;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      underTest = new TaskComponent();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
 });

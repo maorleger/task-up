@@ -45,4 +45,15 @@ describe('TaskListComponent', () => {
     })
   });
 
+  describe('cancelButton click handler', () => {
+    it('cancel button reverts to read-only mode', () => {
+
+        underTest.setEditMode(true);
+        underTest.onCancelButtonClicked();
+
+        expect(underTest.isInEditMode).toBeFalsy;
+
+    });
+  });
+
 });

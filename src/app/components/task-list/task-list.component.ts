@@ -1,5 +1,5 @@
 // Angular imports
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 
 // Service module imports
 import { TasksService } from '../../services/services.module';
@@ -13,7 +13,8 @@ import { TasksService } from '../../services/services.module';
 
 export class TaskListComponent implements OnInit {
 
-  tasks: string[];
+  tasks: string[] = [];
+  originalTasks: string[];
   isInEditMode: boolean;
 
   constructor(private taskService: TasksService) {
@@ -30,8 +31,29 @@ export class TaskListComponent implements OnInit {
     this.setEditMode(true);
   }
 
+  onCancelButtonClicked(){
+
+    this.setEditMode(false);
+    this.tasks = this.originalTasks;
+
+  }
+
+  customTrackBy(index: number, obj: any): any{
+      return index;
+  }
+
   setEditMode(isInEditMode: boolean) {
     this.isInEditMode = isInEditMode;
+
+    if(this.isInEditMode){
+        this.originalTasks = [];
+
+        this.tasks.forEach(task => {
+            this.originalTasks.push(task);
+        });
+
+    }
+
   }
 
 }

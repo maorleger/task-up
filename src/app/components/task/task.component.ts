@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'task',
@@ -7,11 +7,23 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
+  private _task: string;
+
   @Input()
   isInEditMode: boolean;
 
+  @Output() 
+  taskChange = new EventEmitter();
+
   @Input()
-  task: string;
+  set task(val: string){
+      this._task = val;
+      this.taskChange.emit(this._task);
+  }
+
+  get task(): string{
+      return this._task;
+  }
 
   constructor() {
     this.isInEditMode = false;
@@ -19,5 +31,6 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
