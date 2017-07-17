@@ -1,34 +1,29 @@
 <div class="taskList">
+  <md-list>
+    <md-list-item *ngFor="let task of tasks; let index = index; trackBy:customTrackBy">
+      <task [isInEditMode]="isInEditMode" [(task)]="tasks[index]"></task>
+    </md-list-item>
+  </md-list>
 
-
-    <md-list>
-        <md-list-item *ngFor="let task of tasks; let index = index; trackBy:customTrackBy">
-            <task [isInEditMode]="isInEditMode" [(task)]="tasks[index]"></task>
-        </md-list-item>
-
-<!--     <task [isInEditMode]="isInEditMode" [(task)]="tasks[0]"></task> -->
-    </md-list>
-
-    <div class="taskList__buttonBar">
-      <button
-         *ngIf="isInEditMode"
-         md-raised-button
-         (click)="onCancelButtonClicked($event)">
-        Cancel
-      </button>
-      <button
-         *ngIf="isInEditMode"
-         md-raised-button
-         (click)="onSaveButtonClicked($event)">
-        Save
-      </button>
-      <button
-         *ngIf="!isInEditMode"
-         md-raised-button
-         class="taskList__editButton"
-         (click)="onEditButtonClicked($event)">
-        Edit
-      </button>
-    </div>
-
+  <div class="taskList__buttonBar">
+    <button
+       *ngIf="isInEditMode"
+       md-raised-button
+       (click)="onCancelButtonClicked($event)">
+      Cancel
+    </button>
+    <button
+       *ngIf="isInEditMode"
+       md-raised-button
+       (click)="onSaveButtonClicked($event)">
+      Save
+    </button>
+    <button
+       *ngIf="!isInEditMode"
+       md-raised-button
+       class="taskList__editButton"
+       (click)="onEditButtonClicked($event)">
+      Edit
+    </button>
+  </div>
 </div>
