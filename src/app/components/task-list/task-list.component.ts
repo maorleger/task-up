@@ -31,29 +31,24 @@ export class TaskListComponent implements OnInit {
     this.setEditMode(true);
   }
 
-  onCancelButtonClicked(){
-
+  onCancelButtonClicked() {
     this.setEditMode(false);
     this.tasks = this.originalTasks;
-
   }
 
-  customTrackBy(index: number, obj: any): any{
-      return index;
+  customTrackBy(index: number, obj: any): any {
+    return index;
   }
 
   setEditMode(isInEditMode: boolean) {
     this.isInEditMode = isInEditMode;
 
-    if(this.isInEditMode){
-        this.originalTasks = [];
+    if (this.isInEditMode) {
+      this.originalTasks = [];
 
-        this.tasks.forEach(task => {
-            this.originalTasks.push(task);
-        });
-
+      this.tasks.forEach(task => {
+        this.originalTasks.push(task);
+      });
     }
-
   }
-
 }

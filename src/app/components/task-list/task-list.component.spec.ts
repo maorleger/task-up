@@ -8,9 +8,10 @@ describe('TaskListComponent', () => {
 
   let underTest: TaskListComponent;
 
-    const tasksServiceStub = {
-        getTasks(): Promise<string[]> { throw new Error(); },
-    }
+  const testTasks = ['task1', 'task2'];
+  const tasksServiceStub = {
+    getTasks(): Promise<string[]> { throw new Error(); },
+  }
 
   beforeEach(() => {
     underTest = new TaskListComponent(tasksServiceStub as TasksService);
@@ -18,7 +19,6 @@ describe('TaskListComponent', () => {
 
   it('fetches list of tasks', done => {
 
-    const testTasks = ['task1', 'task2'];
 
     spyOn(tasksServiceStub, 'getTasks').and.callFake(() => {
           return Promise.resolve(testTasks);
@@ -47,12 +47,13 @@ describe('TaskListComponent', () => {
 
   describe('cancelButton click handler', () => {
     it('cancel button reverts to read-only mode', () => {
+      underTest.tasks = testTasks;
+      underTest.setEditMode(true);
+      underTest.tasks = underTest.tasks.map(function(task) { return task + 'edited' });
 
-        underTest.setEditMode(true);
-        underTest.onCancelButtonClicked();
-
-        expect(underTest.isInEditMode).toBeFalsy;
-
+      underTest.onCancelButtonClicked();
+      expect(underTest.isInEditMode).toEqual(false);
+      expect(underTest.tasks).toEqual(testTasks);
     });
   });
 
