@@ -3,6 +3,6 @@
   flex-direction: column;
 }
 
-.taskList__editButton {
+.taskList__buttonBar {
   align-self: flex-end;
 }

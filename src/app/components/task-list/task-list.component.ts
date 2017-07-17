@@ -34,6 +34,12 @@ export class TaskListComponent implements OnInit {
   onCancelButtonClicked() {
     this.setEditMode(false);
     this.tasks = this.originalTasks;
+    this.originalTasks = [];
+  }
+
+  onSaveButtonClicked() {
+    this.setEditMode(false);
+    this.originalTasks = [];
   }
 
   customTrackBy(index: number, obj: any): any {
@@ -44,11 +50,7 @@ export class TaskListComponent implements OnInit {
     this.isInEditMode = isInEditMode;
 
     if (this.isInEditMode) {
-      this.originalTasks = [];
-
-      this.tasks.forEach(task => {
-        this.originalTasks.push(task);
-      });
+      this.originalTasks = this.tasks.map(task => task);
     }
   }
 }

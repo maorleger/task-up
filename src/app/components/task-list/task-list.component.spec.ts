@@ -46,15 +46,40 @@ describe('TaskListComponent', () => {
   });
 
   describe('cancelButton click handler', () => {
-    it('cancel button reverts to read-only mode', () => {
+    beforeEach(() => {
       underTest.tasks = testTasks;
       underTest.setEditMode(true);
-      underTest.tasks = underTest.tasks.map(function(task) { return task + 'edited' });
-
+      underTest.tasks = underTest.tasks.map(task => task + 'edited');
       underTest.onCancelButtonClicked();
-      expect(underTest.isInEditMode).toEqual(false);
-      expect(underTest.tasks).toEqual(testTasks);
     });
+
+    it('reverts to read-only mode', () => {
+      expect(underTest.isInEditMode).toEqual(false);
+    });
+
+    it('restores the original task values', () => {
+      expect(underTest.tasks).toEqual(testTasks);
+      expect(underTest.originalTasks).toEqual([]);
+    });
+  });
+
+  describe('saveButton click handler', () => {
+    beforeEach(() => {
+      underTest.tasks = testTasks;
+      underTest.setEditMode(true);
+      underTest.tasks = underTest.tasks.map(task => task + 'edited');
+      underTest.onSaveButtonClicked();
+    });
+
+    it('reverts to read-only mode', () => {
+      expect(underTest.isInEditMode).toEqual(false);
+    });
+
+    it('keeps the edited tasks saved', () => {
+      expect(underTest.tasks).toEqual(['task1edited', 'task2edited']);
+      expect(underTest.originalTasks).toEqual([]);
+    });
+
   });
 
 });
