@@ -47,8 +47,10 @@ export class TaskComponent implements OnInit {
   }
 
   onClick(event) {
-    this.isInEditMode = this.selfRef.nativeElement.contains(event.target) &&
-      !this.checkbox.nativeElement.contains(event.target);
+    this.isInEditMode =
+      this.selfRef.nativeElement.contains(event.target) &&
+      !(this.checkbox && this.checkbox.nativeElement.contains(event.target));
+
   }
 
 }
