@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.css']
+  styleUrls: ['./task.component.css'],
+  host: {
+      '(document:click)': 'onClick($event)'
+  }
 })
 export class TaskComponent implements OnInit {
 
@@ -25,12 +28,25 @@ export class TaskComponent implements OnInit {
       return this._task;
   }
 
-  constructor() {
+  constructor(private selfRef: ElementRef) {
+
     this.isInEditMode = false;
+
   }
 
   ngOnInit() {
   }
 
+  public onTaskClick(){
+      this.isInEditMode = true;
+  }
+
+  onClick(event){
+
+      if(!this.selfRef.nativeElement.contains(event.target) && this.isInEditMode){
+          this.isInEditMode = false;
+      }
+
+  }
 
 }
