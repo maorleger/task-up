@@ -1,4 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { 
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'task',
@@ -12,10 +20,13 @@ export class TaskComponent implements OnInit {
 
   private _task: string;
 
+  @ViewChild('checkbox')
+  checkbox: ElementRef
+
   @Input()
   isInEditMode: boolean;
 
-  @Output() 
+  @Output()
   taskChange = new EventEmitter();
 
   @Input()
@@ -29,24 +40,15 @@ export class TaskComponent implements OnInit {
   }
 
   constructor(private selfRef: ElementRef) {
-
     this.isInEditMode = false;
-
   }
 
   ngOnInit() {
   }
 
-  public onTaskClick(){
-      this.isInEditMode = true;
-  }
-
-  onClick(event){
-
-      if(!this.selfRef.nativeElement.contains(event.target) && this.isInEditMode){
-          this.isInEditMode = false;
-      }
-
+  onClick(event) {
+    this.isInEditMode = this.selfRef.nativeElement.contains(event.target) &&
+      this.checkbox.nativeElement.contains(event.target);
   }
 
 }
