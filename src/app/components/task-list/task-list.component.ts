@@ -18,7 +18,6 @@ export class TaskListComponent implements OnInit {
   isInEditMode: boolean;
 
   constructor(private taskService: TasksService) {
-    this.isInEditMode = false;
   }
 
   ngOnInit() {
@@ -27,30 +26,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  onEditButtonClicked() {
-    this.setEditMode(true);
-  }
-
-  onCancelButtonClicked() {
-    this.setEditMode(false);
-    this.tasks = this.originalTasks;
-    this.originalTasks = [];
-  }
-
-  onSaveButtonClicked() {
-    this.setEditMode(false);
-    this.originalTasks = [];
-  }
-
   customTrackBy(index: number, obj: any): any {
     return index;
-  }
-
-  setEditMode(isInEditMode: boolean) {
-    this.isInEditMode = isInEditMode;
-
-    if (this.isInEditMode) {
-      this.originalTasks = this.tasks.map(task => task);
-    }
   }
 }

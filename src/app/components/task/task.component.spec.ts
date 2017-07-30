@@ -7,7 +7,6 @@ describe('TaskComponent', () => {
    let underTest: TaskComponent;
 
   beforeEach(() => {
-      underTest = new TaskComponent();
   });
 
 });
