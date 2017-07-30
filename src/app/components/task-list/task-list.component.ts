@@ -32,4 +32,9 @@ export class TaskListComponent implements OnInit {
   customTrackBy(index: number, obj: any): any {
     return index;
   }
+
+  addTask() {
+    const task = new Task(this.taskService);
+    this.tasks.push(task);
+  }
 }

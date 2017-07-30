@@ -12,6 +12,7 @@ import {
   MdCheckboxModule,
   MdCardModule,
   MdButtonModule,
+  MdIconModule,
   MdInputModule
 } from '@angular/material';
 import { TaskComponent } from './components/task/task.component';
@@ -30,6 +31,7 @@ import { TaskComponent } from './components/task/task.component';
     MdCheckboxModule,
     MdCardModule,
     MdButtonModule,
+    MdIconModule,
     MdInputModule
   ],
   providers: [],

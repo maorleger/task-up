@@ -6,3 +6,8 @@
 .taskList__buttonBar {
   align-self: flex-end;
 }
+
+.addTask {
+  display: flex;
+  justify-content: flex-end;
+}
