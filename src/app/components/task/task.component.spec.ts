@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ElementRef } from '@angular/core';
 
 import { TaskComponent } from './task.component';
+import { Task } from '../../library/task';
 
 describe('TaskComponent', () => {
 
@@ -19,7 +20,8 @@ describe('TaskComponent', () => {
 
   describe('task setter', () => {
     it('properly sets the task variable', () => {
-      const testTask = 'eric gets it done';
+      const testTask = new Task(null);
+      testTask.description = 'eric gets it done';
       underTest.task = testTask;
       expect(underTest.task).toEqual(testTask);
     });

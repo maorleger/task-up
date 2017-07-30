@@ -3,14 +3,15 @@ import { TasksService } from '../../services/services.module'
 
 // Local folder imports
 import { TaskListComponent } from './task-list.component';
+import { Task } from '../../library/task';
 
 describe('TaskListComponent', () => {
 
   let underTest: TaskListComponent;
 
-  const testTasks = ['task1', 'task2'];
+  const testTasks: Task[] = [new Task(null), new Task(null)];
   const tasksServiceStub = {
-    getTasks(): Promise<string[]> { throw new Error(); },
+    getTasks(): Promise<Task[]> { throw new Error(); },
   }
 
   beforeEach(() => {
@@ -19,15 +20,15 @@ describe('TaskListComponent', () => {
 
   it('fetches list of tasks', done => {
     spyOn(tasksServiceStub, 'getTasks').and.callFake(() => {
-          return Promise.resolve(testTasks);
+      return Promise.resolve(testTasks);
     });
 
     underTest.ngOnInit();
 
     setTimeout(() => {
-        expect(tasksServiceStub.getTasks).toHaveBeenCalled();
-        expect(underTest.tasks).toEqual(testTasks);
-        done();
+      expect(tasksServiceStub.getTasks).toHaveBeenCalled();
+      expect(underTest.tasks).toEqual(testTasks);
+      done();
     });
   });
 });

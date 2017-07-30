@@ -1,8 +1,10 @@
 import { TasksService } from './tasks.service';
+import { Task } from '../library/task';
 
 describe('tasks', () => {
   let tasksService: TasksService;
-  const testTasks = ['Task1', 'Task2'];
+  const testTasks = [new Task(null), new Task(null)];
+
   beforeEach(() => {
     tasksService = new TasksService();
     tasksService.tasks = testTasks;
