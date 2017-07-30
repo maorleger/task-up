@@ -8,6 +8,10 @@ import {
   ViewChild
 } from '@angular/core';
 
+import{
+    Task
+} from '../../library/task'
+
 @Component({
   selector: 'task',
   templateUrl: './task.component.html',
@@ -18,7 +22,7 @@ import {
 })
 export class TaskComponent implements OnInit {
 
-  private _task: string;
+  private _task: Task;
 
   @ViewChild('checkbox', {read: ElementRef})
   checkbox: ElementRef
@@ -29,12 +33,12 @@ export class TaskComponent implements OnInit {
   taskChange = new EventEmitter();
 
   @Input()
-  set task(val: string){
+  set task(val: Task){
       this._task = val;
       this.taskChange.emit(this._task);
   }
 
-  get task(): string{
+  get task(): Task{
       return this._task;
   }
 

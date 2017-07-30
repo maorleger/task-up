@@ -4,6 +4,9 @@ import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 // Service module imports
 import { TasksService } from '../../services/services.module';
 
+//Library imports
+import { Task } from '../../library/task'
+
 @Component({
   selector: 'task-list',
   templateUrl: './task-list.component.html',
@@ -13,7 +16,7 @@ import { TasksService } from '../../services/services.module';
 
 export class TaskListComponent implements OnInit {
 
-  tasks: string[] = [];
+  tasks: Task[] = [];
   originalTasks: string[];
   isInEditMode: boolean;
 
