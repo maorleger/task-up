@@ -1,4 +1,4 @@
-import { 
+import {
   Component,
   ElementRef,
   EventEmitter,
@@ -23,7 +23,6 @@ export class TaskComponent implements OnInit {
   @ViewChild('checkbox', {read: ElementRef})
   checkbox: ElementRef
 
-  @Input()
   isInEditMode: boolean;
 
   @Output()
