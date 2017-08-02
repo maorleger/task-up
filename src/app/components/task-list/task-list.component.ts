@@ -33,8 +33,12 @@ export class TaskListComponent implements OnInit {
     return index;
   }
 
-  addTask() {
-    const task = new Task(this.taskService);
-    this.tasks.push(task);
+  addTask(event) {
+    event.stopPropagation();
+    const task = this.taskService.addTask();
+    this.ngOnInit();
+    // const task = new Task(this.taskService);
+    // task.isInEditMode = true;
+    // this.tasks.push(task);
   }
 }

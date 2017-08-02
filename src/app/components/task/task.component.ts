@@ -27,30 +27,30 @@ export class TaskComponent implements OnInit {
   @ViewChild('checkbox', {read: ElementRef})
   checkbox: ElementRef
 
-  isInEditMode: boolean;
+  // isInEditMode: boolean;
 
   @Output()
   taskChange = new EventEmitter();
 
   @Input()
   set task(val: Task){
-      this._task = val;
-      this.taskChange.emit(this._task);
+    this._task = val;
+    this.taskChange.emit(this._task);
   }
 
   get task(): Task{
-      return this._task;
+    return this._task;
   }
 
   constructor(private selfRef: ElementRef) {
-    this.isInEditMode = false;
+    // this.isInEditMode = false;
   }
 
   ngOnInit() {
   }
 
   onClick(event) {
-    this.isInEditMode =
+    this.task.isInEditMode =
       this.selfRef.nativeElement.contains(event.target) &&
       !(this.checkbox && this.checkbox.nativeElement.contains(event.target));
 

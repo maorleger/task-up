@@ -1,6 +1,6 @@
-<md-checkbox *ngIf="!isInEditMode" #checkbox [checked]="task.completed"></md-checkbox>
-<span *ngIf="!isInEditMode">{{task.description}}</span>
+<md-checkbox *ngIf="!task.isInEditMode" #checkbox [checked]="task.completed"></md-checkbox>
+<span *ngIf="!task.isInEditMode">{{task.description}}</span>
 
-<md-input-container class="taskDescription" *ngIf="isInEditMode">
+<md-input-container class="taskDescription" *ngIf="task.isInEditMode">
   <input mdInput placeholder="Task Description" [(ngModel)]="task.description">
 </md-input-container>

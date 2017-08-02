@@ -11,6 +11,7 @@ export class TasksService {
   ].map(function(task, i) {
     task.description = 'Task ' + (i + 1);
     task.completed = i % 2 === 0;
+    task.isInEditMode = false;
     return task;
   });
 
@@ -20,5 +21,11 @@ export class TasksService {
 
   saveTask(id: string): Promise<boolean> {
     return Promise.resolve(true);
+  }
+
+  addTask() {
+    const task = new Task(this);
+    task.isInEditMode = true;
+    this.tasks.push(task);
   }
 }
