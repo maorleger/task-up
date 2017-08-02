@@ -8,8 +8,8 @@ import {
   ViewChild
 } from '@angular/core';
 
-import{
-    Task
+import {
+  Task
 } from '../../library/task'
 
 @Component({
@@ -17,10 +17,10 @@ import{
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css'],
   host: {
-      '(document:click)': 'onClick($event)'
+    '(document:click)': 'onClick($event)'
   }
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
 
   private _task: Task;
 
@@ -42,18 +42,11 @@ export class TaskComponent implements OnInit {
     return this._task;
   }
 
-  constructor(private selfRef: ElementRef) {
-    // this.isInEditMode = false;
-  }
-
-  ngOnInit() {
-  }
+  constructor(private selfRef: ElementRef) { }
 
   onClick(event) {
     this.task.isInEditMode =
       this.selfRef.nativeElement.contains(event.target) &&
       !(this.checkbox && this.checkbox.nativeElement.contains(event.target));
-
   }
-
 }

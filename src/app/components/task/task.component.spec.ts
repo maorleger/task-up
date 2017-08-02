@@ -7,15 +7,19 @@ import { Task } from '../../library/task';
 describe('TaskComponent', () => {
 
   let underTest: TaskComponent;
-  let selfRef: ElementRef;
+
+  function initTaskComponent(ref) {
+    underTest = new TaskComponent(ref);
+    underTest.task = new Task(null);
+  }
 
   beforeEach(() => {
-    selfRef = {
+    const selfRef: ElementRef = {
       nativeElement: {
         contains: (x) => x === 1
       }
     }
-    underTest = new TaskComponent(selfRef);
+    initTaskComponent(selfRef);
   });
 
   describe('task setter', () => {
@@ -30,26 +34,26 @@ describe('TaskComponent', () => {
   describe('onClick', () => {
     it('sets isInEditMode when clicking on the text', () => {
       underTest.onClick({target: 1});
-      expect(underTest.isInEditMode).toBeTruthy();
+      expect(underTest.task.isInEditMode).toBeTruthy();
 
       underTest.onClick({target: 2});
-      expect(underTest.isInEditMode).toBeFalsy();
+      expect(underTest.task.isInEditMode).toBeFalsy();
     });
 
     it('does not set isInEditMode when clicking a checkbox', () => {
-      selfRef = {
+      const selfRef: ElementRef = {
         nativeElement: {
           contains: x => true
         }
       }
-      underTest = new TaskComponent(selfRef);
+      initTaskComponent(selfRef);
       underTest.checkbox = {
         nativeElement: {
           contains: x => x !== 1
         }
       };
       underTest.onClick({target: 2});
-      expect(underTest.isInEditMode).toBeFalsy();
+      expect(underTest.task.isInEditMode).toBeFalsy();
     });
   });
 });

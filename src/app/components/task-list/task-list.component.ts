@@ -15,30 +15,29 @@ import { Task } from '../../library/task'
 })
 
 export class TaskListComponent implements OnInit {
-
   tasks: Task[] = [];
   originalTasks: string[];
-  isInEditMode: boolean;
 
   constructor(private taskService: TasksService) {
   }
 
   ngOnInit() {
-    this.taskService.getTasks().then((result) => {
-      this.tasks = result;
-    });
+    this.getTasks();
   }
 
   customTrackBy(index: number, obj: any): any {
     return index;
   }
 
+  private getTasks() {
+    this.taskService.getTasks().then(result => {
+      this.tasks = result;
+    });
+  }
+
   addTask(event) {
     event.stopPropagation();
     const task = this.taskService.addTask();
-    this.ngOnInit();
-    // const task = new Task(this.taskService);
-    // task.isInEditMode = true;
-    // this.tasks.push(task);
+    this.getTasks();
   }
 }
