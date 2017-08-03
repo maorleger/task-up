@@ -42,6 +42,10 @@ export class TaskComponent {
     return this._task;
   }
 
+  checkboxChecked(event) {
+    this.task.completed = !this.task.completed;
+  }
+
   constructor(private selfRef: ElementRef) { }
 
   onClick(event) {

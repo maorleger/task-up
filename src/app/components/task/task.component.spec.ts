@@ -3,6 +3,7 @@ import { ElementRef } from '@angular/core';
 
 import { TaskComponent } from './task.component';
 import { Task } from '../../library/task';
+import { TasksService } from '../../services/tasks.service';
 
 describe('TaskComponent', () => {
 
@@ -10,7 +11,7 @@ describe('TaskComponent', () => {
 
   function initTaskComponent(ref) {
     underTest = new TaskComponent(ref);
-    underTest.task = new Task(null);
+    underTest.task = new Task(new TasksService());
   }
 
   beforeEach(() => {
@@ -54,6 +55,16 @@ describe('TaskComponent', () => {
       };
       underTest.onClick({target: 2});
       expect(underTest.task.isInEditMode).toBeFalsy();
+    });
+  });
+
+  describe('clicking the checkbox', () => {
+    it('toggles between complete and incomplete correctly', () => {
+      underTest.task.completed = false;
+      underTest.checkboxChecked({stopPropagation: () => {}});
+      expect(underTest.task.completed).toBeTruthy();
+      underTest.checkboxChecked({stopPropagation: () => {}});
+      expect(underTest.task.completed).toBeFalsy();
     });
   });
 });
